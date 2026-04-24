@@ -1,28 +1,36 @@
 # Prueba Técnica: Desarrollador Odoo - Maxialimentos SAS
 **Candidato:** Wilson Mauricio Rodriguez Rodriguez 
-
 **Tecnología:** Odoo 16.0 Community Edition
 
-## Ejercicio 1: Módulo de Control de Insumos IT (`it_inventory_insumos`)
+---
 
-### Descripción de la Solución
-Se ha desarrollado un módulo personalizado para centralizar y controlar el inventario de insumos de mantenimiento de equipos de cómputo. La solución sustituye el registro manual (papel) por un sistema digital con trazabilidad completa por sede y alertas automáticas de reabastecimiento.
+## 📂 Organización del Repositorio
+Para facilitar la revisión, el proyecto se ha dividido de la siguiente manera:
 
-### Estructura del Módulo
-La organización del código sigue los estándares de Odoo:
-- `models/`: Definición de la lógica de negocio y estructura de datos en PostgreSQL.
-- `views/`: Definición de interfaces de usuario (formularios y listas).
-- `security/`: Control de accesos y permisos.
-- `__manifest__.py`: Metadata, dependencias y registro de archivos de carga.
-
-### Decisiones Técnicas y Criterio Profesional
-1. **Modelo de Datos**: Se optó por una clase heredada de `models.Model` para persistencia total. 
-2. **Campos de Selección (Selection)**: Para los campos `category` y `sede`, se utilizaron diccionarios de selección dinámicos para garantizar la integridad de los datos y facilitar el filtrado de registros.
-3. **Integración con Nucleo Odoo**: Se implementó una relación `Many2one` con el modelo estándar `res.partner`. Esto permite aprovechar la base de datos de proveedores existente en Odoo sin duplicar información.
-4. **Alerta de Stock (UX/UI)**: Para cumplir con el requerimiento de indicadores visuales, se utilizó el atributo `decoration-danger` en la vista de lista (`tree`). Esta técnica es preferida sobre cálculos en el cliente porque se procesa eficientemente en el servidor y ofrece una respuesta visual inmediata.
-5. **Documentación de Código**: Todo el código fuente cuenta con docstrings y comentarios explicativos para facilitar el mantenimiento por parte del equipo de IT de Maxialimentos.
-
-
+1.  **`/it_inventory_insumos`**: Carpeta del módulo desarrollado para Odoo 16. Contiene toda la lógica de modelos, vistas y seguridad solicitada en el **Ejercicio 1**.
+2.  **`analisis_nomina.md`**: Documento con la resolución del **Ejercicio 2**, identificando errores técnicos y legales en las reglas salariales.
+3.  **`propuestas_solucion.md`**: Documento con las propuestas arquitectónicas para los 5 casos de negocio del **Ejercicio 3**.
+4.  **`README.md`**: Este archivo, con la descripción general y decisiones técnicas.
 
 ---
-*Este proyecto fue desarrollado bajo un entorno de Python 3.10 cumpliendo con los estándares de rendimiento de Odoo 16.*
+
+## 🛠️ Ejercicio 1: Control de Insumos IT
+Se ha desarrollado un módulo para centralizar el inventario de mantenimientos de IT.
+*   **Alerta Visual**: Se implementó una lógica dinámica en la vista de lista que resalta en **rojo** los insumos cuando su stock es inferior al mínimo definido.
+*   **Trazabilidad**: Se incluyeron campos de Sede y Categoría para cumplir con el requerimiento de reporte por ubicación.
+*   **Integración**: Relación directa con el maestro de proveedores (`res.partner`) de Odoo.
+
+## 📝 Ejercicio 2: Análisis de Nómina Colombia
+Se realizó la corrección de la regla salarial de Auxilio de Transporte proyectada a **2026**, corrigiendo el error de "valores quemados" y asegurando que el cálculo se base en el **Total Devengado** y no solo en el básico, cumpliendo con la ley colombiana.
+
+## 💡 Ejercicio 3: Propuestas de Solución
+Se plantean soluciones para casos reales (POS, Facturación DIAN, Logística y Gestión de proyectos) enfocadas en la eficiencia y el uso de herramientas nativas de Odoo y Odoo.sh.
+
+---
+
+### Instrucciones de Instalación (Módulo)
+1. Copiar la carpeta `it_inventory_insumos` en tu directorio de addons.
+2. Instalar el módulo desde el menú de Aplicaciones en Odoo 16.
+3. El módulo depende de `base` y `stock`.
+
+*Desarrollado bajo Python 3.10.*
