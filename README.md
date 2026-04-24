@@ -21,6 +21,9 @@ Se ha desarrollado un módulo para centralizar el inventario de mantenimientos d
 *   **Trazabilidad**: Se incluyeron campos de Sede y Categoría para cumplir con el requerimiento de reporte por ubicación.
 *   **Integración**: Relación directa con el maestro de proveedores (`res.partner`) de Odoo.
 
+  <img width="1919" height="402" alt="image" src="https://github.com/user-attachments/assets/d5183772-f9de-4a9d-90bd-65a400dedc37" />
+
+
 ## Ejercicio 2: Análisis de Nómina Colombia
 Se realizó la corrección de la regla salarial de Auxilio de Transporte proyectada a **2026**, corrigiendo el error de "valores quemados" y asegurando que el cálculo se base en el **Total Devengado** y no solo en el básico, cumpliendo con la ley colombiana.
 
