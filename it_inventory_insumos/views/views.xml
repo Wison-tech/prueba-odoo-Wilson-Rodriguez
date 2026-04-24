@@ -1,0 +1,41 @@
+<odoo>
+  <!-- Definicion de la vista de la lista -->
+  <record id="view_it_inventory_insumo_tree" model="ir.ui.view">
+    <field name="name">it.inventory.insumo.tree</field>
+    <field name="model">it.inventory.insumo</field>
+    <field name="arch" type="xml">
+
+      <!-- 
+      USO DE CRITERIO TECNICO:
+      Se utiliza el atributo decoration-danger para cumplir con el requerimiento
+      de alerta visual.
+
+      Esto permite que el usuario identifique niveles criticos de stock sin
+      calculos manuales.
+      -->
+
+      <tree decoration-danger="qty_stock &lt; qty_min_alert">
+        <field name="name"/>
+        <field name="category"/>
+        <field name="sede"/>
+        <field name="qty_stock"/>
+        <field name="qty_min_alert"/>
+        <!-- Se agrega el provedor para mejorar la trazabilidad -->
+        <field name="partner_id"/>
+      </tree>
+    </field>
+  </record>
+
+  <!-- Accion que permite abrir la vista de lista -->
+  <record id="action_it_inventory_insumo" model="ir.actions.act_window">
+    <field name="name">Insumos IT</field>
+    <field name="res_model">it.inventory.insumo</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <!-- Estructuras de menus para la facil navegacion -->
+  <menuitem id="menu_it_root" name="Insumos IT" sequence="10" />
+  <menuitem id="menu_it_insumos" name="Inventario" parent="menu_it_root" 
+  action="action_it_inventory_insumo" />
+
+</odoo>
